@@ -1,0 +1,53 @@
+# .github/workflows/chromatic-auto-approve.yml
+# Auto-approves Chromatic snapshots on PRs that only touch:
+#   - docs/**
+#   - *.md
+#   - .chromatic/**
+#   - .storybook/**
+# For these PRs, visual changes are expected and safe to auto-accept.
+
+name: Chromatic Auto-Approve (docs/config only)
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'docs/**'
+      - '**.md'
+      - '.chromatic/**'
+      - '.storybook/**'
+
+jobs:
+  chromatic-auto-approve:
+    name: Chromatic (auto-approve docs/config changes)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Storybook
+        run: npm run build-storybook
+
+      - name: Run Chromatic (auto-accept all changes)
+        uses: chromaui/action@v11
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          storybookBuildDir: storybook-static
+          exitOnceUploaded: true
+          onlyChanged: true
+          exitZeroOnChanges: true
+          autoAcceptChanges: true
+        env:
+          CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
