@@ -1,0 +1,42 @@
+{
+  "name": "miura-hero-atelier",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Digital Cultural Origami Atelier – Three.js + Spline + Figma + Chromatic QA pipeline",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "chromatic": "npx chromatic --project-token=$CHROMATIC_PROJECT_TOKEN",
+    "lint": "eslint src --ext .js,.jsx",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "@react-three/fiber": "^8.17.10",
+    "@splinetool/react": "^0.9.490",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "three": "^0.168.0"
+  },
+  "devDependencies": {
+    "@storybook/addon-a11y": "^8.3.6",
+    "@storybook/addon-essentials": "^8.3.6",
+    "@storybook/addon-interactions": "^8.3.6",
+    "@storybook/builder-vite": "^8.3.6",
+    "@storybook/react": "^8.3.6",
+    "@storybook/test": "^8.3.6",
+    "chromatic": "^11.10.4",
+    "eslint": "^9.11.1",
+    "eslint-plugin-react": "^7.37.1",
+    "storybook": "^8.3.6",
+    "vite": "^5.4.8",
+    "vitest": "^2.1.1"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  }
+}
