@@ -1,0 +1,13 @@
+{
+  "projectId": "Project:YOUR_PROJECT_ID",
+  "onlyChanged": true,
+  "exitOnceUploaded": true,
+  "exitZeroOnChanges": true,
+  "viewports": [320, 768, 1280, 1920],
+  "modes": {
+    "Atelier/Hero/MiuraHeroThree/Frame1_FirstCrease": {},
+    "Atelier/Hero/MiuraHeroThree/Frame2_HingeInitiation": {},
+    "Atelier/Hero/MiuraHeroThree/Frame3_MidfieldZigzag": {},
+    "Atelier/Hero/MiuraHeroThree/Frame4_FullDeployment": {}
+  }
+}
